@@ -135,16 +135,7 @@ public class View extends javax.swing.JFrame {
 
     private void jtxtCodActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtCodActionPerformed
         // TODO add your handling code here:
-        String cod = jtxtCod.getText();
-        String desc = jtxtDesc.getText();
-        String preco = jtxtPreco.getText();
-        String estq = jtxtEstq.getText();
-        try{
-            new ProdutoController().grava(cod, desc, Double.parseDouble(preco), Integer.parseInt(estq));
-        } catch(IOException e){
-            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar" + e.getMessage());
-            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, e);
-        }
+        
         
         
         
@@ -152,6 +143,17 @@ public class View extends javax.swing.JFrame {
 
     private void jBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnSalvarActionPerformed
         // TODO add your handling code here:
+        String cod = jtxtCod.getText();
+        String desc = jtxtDesc.getText();
+        String preco = jtxtPreco.getText();
+        String estq = jtxtEstq.getText();
+        try{
+            new ProdutoController().grava(cod, desc, Double.parseDouble(preco), Integer.parseInt(estq));
+            JOptionPane.showMessageDialog(rootPane, "cadastro efetuado");
+        } catch(IOException e){
+            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar" + e.getMessage());
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, e);
+        }
     }//GEN-LAST:event_jBtnSalvarActionPerformed
 
     /**

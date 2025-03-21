@@ -86,6 +86,13 @@ public class Produto {
         }
         return Objects.equals(this.desc, other.desc);
     }
-    
+
+    @Override
+    public String toString() {
+        return codigo + "\n" + 
+               desc + "\n" + 
+               valor + "\n" +
+               quantEstoque;
+    }
     
 }
