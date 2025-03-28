@@ -150,6 +150,10 @@ public class View extends javax.swing.JFrame {
         try{
             new ProdutoController().grava(cod, desc, Double.parseDouble(preco), Integer.parseInt(estq));
             JOptionPane.showMessageDialog(rootPane, "cadastro efetuado");
+            jtxtCod.setText("");
+            jtxtDesc.setText("");
+            jtxtPreco.setText("");
+            jtxtEstq.setText("");
         } catch(IOException e){
             JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar" + e.getMessage());
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, e);

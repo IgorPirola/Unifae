@@ -9,6 +9,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -23,6 +26,19 @@ public class ProdutoDAO {
     
     private String nomeArq = null;
     
+    private Connection con = null;
+    
+    public ProdutoDAO() throws SQLException{
+        if(con == null){
+            Scanner leitor = new Scanner(System.in);
+            String url = "jdbc:mysql://localhost:3306/POO3?useSSL=false&serverTimezone=UTC";
+            String usr = "root";
+            String senha = leitor.nextLine();
+            leitor.nextLine();
+            con = DriverManager.getConnection(url, usr, senha);
+        }
+    }
+    
     public ProdutoDAO(String nomeArq){
         this.nomeArq = nomeArq;
     }
@@ -30,7 +46,7 @@ public class ProdutoDAO {
     public void grava(Produto produto) throws IOException{
         FileWriter arquivoSaida; //Objeto para o arquivo onde a escrita será realizada
         PrintWriter out; //Objeto para escrever
-        arquivoSaida = new FileWriter(nomeArq); //Abertura do arquivo
+        arquivoSaida = new FileWriter(nomeArq, true); //Abertura do arquivo
         
         out = new PrintWriter(arquivoSaida);
         out.println(produto);
@@ -57,12 +73,12 @@ public class ProdutoDAO {
        }
        return null;
     }
-    public Collection<Produto> recuperaTodos(){
+    public Collection<Produto> recuperaTodos() throws FileNotFoundException{
         return null;
     }
     
     public static void main(String[] args){
-        
+        /*
         try{
             ProdutoDAO dao = new ProdutoDAO("produtos.txt");
         
@@ -78,6 +94,14 @@ public class ProdutoDAO {
             JOptionPane.showMessageDialog(null, "Houve um erro na leitura");
         }
         
+        */
+        
+        try{
+            new ProdutoDAO();
+            JOptionPane.showMessageDialog(null, "Conexão efetuada");
+        } catch(SQLException ex){
+            JOptionPane.showMessageDialog(null, "Reveja os paramêtros da conexão\n"+ ex.getMessage());
+        }
         
     }
 }
