@@ -1,12 +1,20 @@
 # Comando JOIN
 # 1. Listar os nomes dos departamentos e dos seus gerentes.
-select d.nome as Departamento, f.nome as Gerente from departamento d join funcionario f on d.id = f.departamentoID where f.id = d.gerente;
+select d.nome as Departamento, f.nome as Gerente 
+from departamento d join funcionario f 
+on f.id = d.gerente;
+
 
 # 2. Mostrar os nomes dos funcionários e os nomes dos departamentos que eles trabalham.
-select f.nome as Funcionario, d.nome as Departamento from funcionario f left join departamento d on d.id = f.departamentoID;
+select f.nome as Funcionario, d.nome as Departamento 
+from funcionario f join departamento d 
+on d.id = f.departamentoID;
+
 
 # 3. Mostrar o nome dos funcionários e o nome de seus supervisores.
-select f1.nome as Funcionario, f2.nome as Supervisor from funcionario f1 join funcionario f2 on f2.id = f1.supervisor;
+select f1.nome as Funcionario, f2.nome as Supervisor 
+from funcionario f1 join funcionario f2 
+on f2.id = f1.supervisor;
 
 
 # Subconsultas
