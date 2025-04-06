@@ -11,6 +11,7 @@ public class Produto {
     private String desc;
     private double valor;
     private int quantEstoque;
+    private int codProd;
 
     public Produto(String codigo, String desc, double valor, int quantEstoque) {
         this.codigo = codigo;
@@ -21,6 +22,14 @@ public class Produto {
     
     public Produto(){};
 
+    public int getCodProd() {
+        return codProd;
+    }
+
+    public void setCodProd(int codProd) {
+        this.codProd = codProd;
+    }
+    
     public String getCodigo() {
         return codigo;
     }
@@ -89,7 +98,8 @@ public class Produto {
 
     @Override
     public String toString() {
-        return codigo + "\n" + 
+        return codProd + "\n" +
+               codigo + "\n" + 
                desc + "\n" + 
                valor + "\n" +
                quantEstoque;

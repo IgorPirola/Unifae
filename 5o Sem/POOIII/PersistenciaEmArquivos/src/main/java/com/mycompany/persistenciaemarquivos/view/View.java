@@ -6,6 +6,7 @@ package com.mycompany.persistenciaemarquivos.view;
 
 import com.mycompany.persistenciaemarquivos.controller.ProdutoController;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -15,12 +16,13 @@ import javax.swing.JOptionPane;
  * @author igorp
  */
 public class View extends javax.swing.JFrame {
-
+    private ProdutoController controle = null;
     /**
      * Creates new form View
      */
     public View() {
         initComponents();
+        controle = new ProdutoController();
     }
 
     /**
@@ -148,13 +150,16 @@ public class View extends javax.swing.JFrame {
         String preco = jtxtPreco.getText();
         String estq = jtxtEstq.getText();
         try{
-            new ProdutoController().grava(cod, desc, Double.parseDouble(preco), Integer.parseInt(estq));
+            controle.grava(cod, desc, Double.parseDouble(preco), Integer.parseInt(estq));
             JOptionPane.showMessageDialog(rootPane, "cadastro efetuado");
             jtxtCod.setText("");
             jtxtDesc.setText("");
             jtxtPreco.setText("");
             jtxtEstq.setText("");
         } catch(IOException e){
+            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar" + e.getMessage());
+            Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, e);
+        } catch(SQLException e){
             JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar" + e.getMessage());
             Logger.getLogger(View.class.getName()).log(Level.SEVERE, null, e);
         }
