@@ -1,0 +1,7 @@
+Q3
+Fica mais claro de se ler o código e entende-lo, e para jogar a string completa, sem usar varios métodos para trata-la e deixar do jeito que o banco 
+aceite.
+
+Q4
+Para puxar todas as dependências do java para tratar bancos em mysql, sem essa dependência o java não consegue entender as bibliotecas e fazer as 
+conexões e comandos necessários.
