@@ -1,0 +1,4 @@
+[25/04/2025 20:28:12] INFO: item adicionado ao carrinho: Produto XYZ
+[25/04/2025 20:28:12] INFO: Pagamento processado com sucesso
+[25/04/2025 20:28:12] ERRO: Erro ao carregar a imagem do produto
+[25/04/2025 20:28:12] DEBUG: esta msg será registrada
